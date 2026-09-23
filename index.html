@@ -66,19 +66,88 @@
       color: #fffbe6;
       font-size: 0.85rem;
     }
+    /* Twee foto's naast elkaar met ruimte ertussen */
+.fotostrip {
+  display: flex;
+  justify-content: center;      /* netjes in het midden */
+  align-items: flex-start;
+  gap: 80px;                    /* de tussenruimte tussen de foto's */
+  margin-top: 32px;
+}
+
+/* De ballonnen staan boven in die tussenruimte,
+   met de pijl naar de foto ernaast wijzend */
+.fotokolom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* De tekstballon links van het midden: pijl wijst naar LINKS (Betina) */
+.tekstballon {
+  position: absolute;
+  top: -14px;
+  background: white;
+  color: #b8860b;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 18px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  white-space: nowrap;
+  z-index: 1;
+}
+
+.tekstballon.links {
+  right: 100%;                  /* bal blijft links van de foto staan */
+  margin-right: 10px;
+}
+.tekstballon.links::after {
+  content: "";
+  position: absolute;
+  right: -10px;                 /* pijl aan de rechterkant van de bal */
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 8px 0 8px 10px;
+  border-style: solid;
+  border-color: transparent transparent transparent white;
+}
+
+/* De tekstballon rechts: pijl wijst naar RECHTS (Violet) */
+.tekstballon.rechts {
+  left: 100%;
+  margin-left: 10px;
+}
+.tekstballon.rechts::after {
+  content: "";
+  position: absolute;
+  left: -10px;                  /* pijl aan de linkerkant van de bal */
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 8px 10px 8px 0;
+  border-style: solid;
+  border-color: transparent white transparent transparent;
+}
   </style>
   
 </head>
 <body>
-  <header>
-    <h1>Betina's tips</h1>
-    <p>Favoriete restaurants in Amsterdam & lekkere recepten</p>
-  </header>
-   <header>
-  <img src="Betina.png" alt="Portret Betina" class="profielfoto">
-  <header>
-  <img src="Violet.jpg" alt="Portret Violet" class="profielfoto">
-     
+<header>
+  <h1>Betina's tips</h1>
+  <p>Favoriete restaurants in Amsterdam & lekkere recepten</p>
+
+  <div class="fotostrip">
+    <div class="fotokolom">
+      <img src="Betina.png" alt="Portret Betina" class="profielfoto">
+      <div class="tekstballon links">Ik ben Betina 🎀</div>
+    </div>
+
+    <div class="fotokolom">
+      <img src="Violet.jpg" alt="Portret Violet" class="profielfoto">
+      <div class="tekstballon rechts">En ik ben Violet! 💜</div>
+    </div>
+  </div>
 </header>
 
   <main>
